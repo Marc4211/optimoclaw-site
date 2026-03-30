@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OptimoClaw — Token Optimizer for OpenClaw</title>
+  <title>OptimoClaw | Token Optimizer for OpenClaw</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -365,9 +365,9 @@
   <div class="problem-inner">
     <div class="section-label">The Problem</div>
     <h2 class="section-title">The cost black box</h2>
-    <p>Multi-agent systems are powerful — but they're also opaque. When you're running a fleet of OpenClaw agents, every heartbeat, every model call, every context window is burning tokens. The costs compound fast, and the only way to understand what's happening is to dig through config files and CLI output.</p>
+    <p>Multi-agent systems are powerful, but they're also opaque. When you're running a fleet of OpenClaw agents, every heartbeat, every model call, every context window is burning tokens. The costs compound fast, and the only way to understand what's happening is to dig through config files and CLI output.</p>
     <blockquote>You shouldn't need to be a YAML expert to understand what your agents are costing you.</blockquote>
-    <p>OptimoClaw gives you a live dashboard that surfaces token usage, model routing, cache efficiency, and tuning controls — all in one place. See what's actually running, what it costs, and adjust it with visual controls instead of manual file edits.</p>
+    <p>OptimoClaw gives you a live dashboard that surfaces token usage, model routing, cache efficiency, and tuning controls, all in one place. See what's actually running, what it costs, and adjust it with visual controls instead of manual file edits.</p>
   </div>
 </div>
 
@@ -380,7 +380,7 @@
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
       <h3>Token Optimizer</h3>
-      <p>Displays model routing assignments across agents with token usage metrics and pricing. Adjust default model, heartbeat frequency, compaction threshold, session context, memory scope, and subagent concurrency — all through visual controls.</p>
+      <p>Displays model routing assignments across agents with token usage metrics and pricing. Adjust default model, heartbeat frequency, compaction threshold, session context, memory scope, and subagent concurrency, all through visual controls.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🎛</div>
@@ -412,7 +412,7 @@
       <img src="token_optimization_2.png" alt="Token Optimizer panel showing model routing and config levers" loading="lazy">
       <div class="caption">
         <h4>Token Optimizer</h4>
-        <p>Agent-specific model routing with per-agent token counts and rate card pricing. OptimoClaw verifies that config changes are actually applied — unlike OpenClaw agents, which can routinely read from stale workspace markdown and report settings that aren't in effect. Includes predefined presets for quick optimization across cost, quality, or responsiveness.</p>
+        <p>Agent-specific model routing with per-agent token counts and rate card pricing. OptimoClaw verifies that config changes are actually applied, unlike OpenClaw agents, which can routinely read from stale workspace markdown and report settings that aren't in effect. Includes predefined presets for quick optimization across cost, quality, or responsiveness.</p>
       </div>
     </div>
     <div class="screenshot-card">
@@ -463,12 +463,12 @@
       <h3>Two data channels</h3>
       <p>Real-time data and batch queries work together to give you a complete picture.</p>
       <ul class="arch-list">
-        <li><strong>WebSocket</strong> — live agent status, model availability, and session events streamed in real time</li>
-        <li><strong>CLI integration</strong> — runs <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw config get</code> and <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw status --usage --json</code> for structured metrics</li>
-        <li><strong>Config writes</strong> — changes applied via <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw config set</code>, with automatic gateway restart and agent workspace sync</li>
+        <li><strong>WebSocket:</strong> live agent status, model availability, and session events streamed in real time</li>
+        <li><strong>CLI integration:</strong> runs <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw config get</code> and <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw status --usage --json</code> for structured metrics</li>
+        <li><strong>Config writes:</strong> changes applied via <code style="display:inline;padding:0.1rem 0.4rem;background:var(--code-bg);border-radius:4px;font-size:0.85em;">openclaw config set</code>, with automatic gateway restart and agent workspace sync</li>
       </ul>
       <h3 style="margin-top:1.5rem;">Design decision</h3>
-      <p>OptimoClaw uses token counts and published pricing rates instead of billing API integration. This avoids requiring admin credentials and lets you start optimizing immediately — no billing setup needed.</p>
+      <p>OptimoClaw uses token counts and published pricing rates instead of billing API integration. This avoids requiring admin credentials and lets you start optimizing immediately. No billing setup needed.</p>
     </div>
   </div>
 </section>
