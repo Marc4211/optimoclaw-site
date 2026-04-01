@@ -283,13 +283,41 @@
     }
     .step h3 { font-size: 1rem; font-weight: 650; margin-bottom: 0.5rem; }
     .step p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem; }
-    .step code {
-      display: block; background: var(--code-bg); border-radius: 6px;
-      padding: 0.75rem 1rem; font-family: var(--font-mono); font-size: 0.8rem;
-      color: var(--text-secondary); overflow-x: auto;
+    .step .code-block {
+      position: relative;
+      background: var(--code-bg);
+      border-radius: 6px;
+      padding: 0.75rem 3rem 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      overflow-x: auto;
+      line-height: 1.8;
     }
-    .step code .prompt { color: var(--text-muted); }
-    .step code .cmd { color: var(--accent-light); }
+    .step .code-block .line { display: block; }
+    .copy-icon {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      padding: 0;
+    }
+    .copy-icon:hover { color: var(--text-primary); border-color: var(--text-muted); background: rgba(255,255,255,0.04); }
+    .copy-icon svg { width: 16px; height: 16px; transition: opacity 0.15s, transform 0.2s; }
+    .copy-icon .icon-check { position: absolute; opacity: 0; transform: scale(0.5); color: #4ade80; }
+    .copy-icon.copied .icon-copy { opacity: 0; transform: scale(0.5); }
+    .copy-icon.copied .icon-check { opacity: 1; transform: scale(1); }
+    .copy-icon.copied { border-color: #4ade80; background: rgba(74, 222, 128, 0.08); }
 
     /* ── Footer ── */
     footer {
@@ -365,9 +393,10 @@
     <a href="https://github.com/Marc4211/optimoclaw/" class="btn-secondary">View on GitHub</a>
   </div>
   <div class="install-bar">
-    <code><span class="prompt">$</span> <span>git clone https://github.com/Marc4211/optimoclaw.git</span></code>
-    <button class="copy-btn" onclick="navigator.clipboard.writeText('git clone https://github.com/Marc4211/optimoclaw.git');this.innerHTML='✓';setTimeout(()=>this.innerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;><rect x=&quot;9&quot; y=&quot;9&quot; width=&quot;13&quot; height=&quot;13&quot; rx=&quot;2&quot;/><path d=&quot;M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1&quot;/></svg>',1500)" aria-label="Copy to clipboard">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    <code><span>git clone https://github.com/Marc4211/optimoclaw.git</span></code>
+    <button class="copy-icon" onclick="copyCode(this, 'git clone https://github.com/Marc4211/optimoclaw.git')" aria-label="Copy to clipboard" style="position:relative;top:auto;right:auto;">
+      <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </button>
   </div>
 </section>
@@ -503,14 +532,26 @@
     <div class="step">
       <h3>Clone and install</h3>
       <p>Pull the repo and install dependencies. Requires Node.js 18.17 or later.</p>
-      <code><span class="prompt">$</span> <span class="cmd">git clone https://github.com/Marc4211/optimoclaw.git</span>
-<span class="prompt">$</span> <span class="cmd">cd optimoclaw</span>
-<span class="prompt">$</span> <span class="cmd">npm install</span></code>
+      <div class="code-block">
+        <span class="line">git clone https://github.com/Marc4211/optimoclaw.git</span>
+        <span class="line">cd optimoclaw</span>
+        <span class="line">npm install</span>
+        <button class="copy-icon" onclick="copyCode(this, 'git clone https://github.com/Marc4211/optimoclaw.git\ncd optimoclaw\nnpm install')" aria-label="Copy to clipboard">
+          <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
     </div>
     <div class="step">
       <h3>Start the dashboard</h3>
       <p>Run in development mode for local use.</p>
-      <code><span class="prompt">$</span> <span class="cmd">npx next dev -p 3070</span></code>
+      <div class="code-block">
+        <span class="line">npx next dev -p 3070</span>
+        <button class="copy-icon" onclick="copyCode(this, 'npx next dev -p 3070')" aria-label="Copy to clipboard">
+          <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </button>
+      </div>
     </div>
     <div class="step">
       <h3>Open and optimize</h3>
@@ -557,5 +598,12 @@
   </div>
 </footer>
 
+<script>
+function copyCode(btn, text) {
+  navigator.clipboard.writeText(text);
+  btn.classList.add('copied');
+  setTimeout(function() { btn.classList.remove('copied'); }, 1500);
+}
+</script>
 </body>
 </html>
