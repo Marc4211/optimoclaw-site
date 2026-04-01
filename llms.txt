@@ -1,0 +1,46 @@
+# OptimoClaw
+
+> A visual control layer for OpenClaw token utilization.
+
+OptimoClaw is an open-source optimization panel for OpenClaw AI agent fleets. Unlike observability dashboards that only show you what's happening, OptimoClaw gives you actual controls: model routing levers, tuning sliders, optimization presets, and a recommendation engine that tells you what to change and why. It surfaces what your agents are actually using, identifies what's costing you, and lets you act on it directly through visual controls instead of editing config files by hand.
+
+## Features
+
+- Token Optimizer: Model routing assignments across agents with token usage metrics and pricing. Adjust default model, heartbeat frequency, compaction threshold, session context, memory scope, and subagent concurrency through visual controls.
+- Performance Tuning: Fine-tune heartbeat frequency, subagent concurrency, and search batch limits with sliders and toggles. Evaluate cost vs. performance trade-offs in real time.
+- Session Insights: Context utilization and cache efficiency charts with actionable analysis.
+- Agent Analyzer: Per-agent detail views showing model assignments, heartbeat config, active sessions, context utilization, and cache efficiency.
+- Multi-Gateway Support: Connect multiple OpenClaw instances and switch between them without restarting.
+
+## Architecture
+
+- Next.js frontend running on port 3070
+- Connects to OpenClaw gateway via WebSocket for live agent status and session events
+- Uses CLI integration with `openclaw config get` and `openclaw status --usage --json` for structured metrics
+- Config changes applied via `openclaw config set` with automatic gateway restart and agent workspace sync
+- Cost estimation uses token counts and published pricing rates (no billing API or admin credentials required)
+
+## Quickstart
+
+```
+git clone https://github.com/Marc4211/optimoclaw.git
+cd optimoclaw
+npm install
+npx next dev -p 3070
+```
+
+Requires Node.js 18.17 or later. Install on the same machine running your OpenClaw gateway.
+
+## OpenClaw Skill
+
+The OptimoClaw skill brings token optimization directly into your OpenClaw agent without requiring the dashboard. It reads live agent configs and token consumption via the OpenClaw CLI, calculates costs across Anthropic, OpenAI, and local Ollama models, and recommends changes with transparent trade-offs. Read-only by default.
+
+- Skill page: https://clawhub.ai/marc4211/optimoclaw-skill
+
+## Links
+
+- Website: https://optimoclaw.com
+- GitHub: https://github.com/Marc4211/optimoclaw
+- OpenClaw Skill: https://clawhub.ai/marc4211/optimoclaw-skill
+- License: MIT
+- Author: Marc Scibelli (https://marcscibelli.com)
