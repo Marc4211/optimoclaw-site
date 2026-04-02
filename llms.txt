@@ -26,7 +26,8 @@ OptimoClaw is an open-source optimization panel for OpenClaw AI agent fleets. Un
 git clone https://github.com/Marc4211/optimoclaw.git
 cd optimoclaw
 npm install
-npx next dev -p 3070
+npx next build
+npx next start -p 3070
 ```
 
 Requires Node.js 18.17 or later. Install on the same machine running your OpenClaw gateway.
